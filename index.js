@@ -6,6 +6,7 @@ const {expressValidator, check} = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('./config/passport');
 
 
 //Crear aplicacion de express
@@ -48,10 +49,13 @@ app.use(cookieParser());
 
 //Sesiones
 app.use(session({
-    secret: 'supersecret',
+    secret: 'supersecreto',
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Pasar el vardump
 
