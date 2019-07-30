@@ -3,7 +3,6 @@ const Tareas = require('../models/Tareas');
 
 exports.proyectoHome = async (req, res) => {
     const proyectos = await Proyectos.findAll();
-
     res.render("index", {
       nombrePagina: 'Proyectos',
       proyectos
@@ -42,8 +41,8 @@ exports.formularioProyecto = async (req, res) => {
       })
     }else{
       //No hay errores insertar en la base de datos
-
-      await Proyectos.create({nombre});
+      const usuarioId = res.locals.usuario.id;
+      await Proyectos.create({nombre, usuarioId});
       res.redirect('/');
 
     }

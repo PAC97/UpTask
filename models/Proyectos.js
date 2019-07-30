@@ -14,6 +14,9 @@ const Proyectos = db.define('proyectos',{
     },
     url:{
         type: Sequelize.STRING
+    },
+    usuarioId:{
+        type: Sequelize.INTEGER,
     }
 }, {
     hooks: {
